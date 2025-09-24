@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from qdrant_client import QdrantClient
 from sentence_transformers import SentenceTransformer
 from fireworks.client import Fireworks
+import os
 
 # Flask app
 app = Flask(__name__)
@@ -14,7 +15,10 @@ COLLECTION_NAME = "mpea"
 embedder = SentenceTransformer("sentence-transformers/all-mpnet-base-v2")
 
 # Fireworks client
-fw = Fireworks(api_key="fw_3ZiwZBcc4BBYAJA4NRzpg68L")
+api_key = os.getenv("FIREWORKS_API_KEY")
+if api_key is None:
+    raise Exception("API key is not provided. Pass it to the FIREWORKS_API_KEY parameter.")
+fw = Fireworks(api_key=api_key)
 
 @app.route("/ask", methods=["POST"])
 def ask():

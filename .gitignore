@@ -1,0 +1,47 @@
+# Python cache & compiled files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.env/
+.venv/
+
+# Environment & secret files
+*.env
+.env.*
+
+# Jupyter
+.ipynb_checkpoints
+
+# VSCode / PyCharm
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Docker
+*.pid
+*.tar
+*.bak
+*.swp
+
+# Model/data cache
+.cache/
+huggingface/
+sentence_transformers/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Qdrant local data (if you mount volumes)
+qdrant_storage/
