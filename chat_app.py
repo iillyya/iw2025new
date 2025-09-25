@@ -5,9 +5,11 @@ from fireworks.client import Fireworks
 import os
 import time
 import requests
+from flask_cors import CORS
 
 # Flask app
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Wait for Qdrant to be ready
 def wait_for_qdrant(url: str, max_retries: int = 30, delay: int = 2):
