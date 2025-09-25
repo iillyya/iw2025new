@@ -11,7 +11,7 @@ RUN pip install --no-cache-dir --upgrade pip \
 # Copy app files and entrypoint script
 COPY . .
 
-RUN sudo apt update && sudo apt install curl
+RUN apt update && apt install curl sudo -y
 
 # Make entrypoint executable
 RUN chmod +x entrypoint.sh

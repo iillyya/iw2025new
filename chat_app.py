@@ -72,7 +72,7 @@ def ask():
                 {"role": "user", "content": f"Question: {user_query}\n\nContext (this is information from MPEA datset. it may be useful information but do not rely completely on it): {context}"}
             ],
             temperature=0.2,
-            max_tokens=1000,
+            max_tokens=4096,
         )
 
         answer = response.choices[0].message.content

@@ -14,7 +14,7 @@ services:
 
   backend:
     build: .
-    container_name: materials_ai_backend
+    image: sosi
     environment:
       - FIREWORKS_API_KEY=${FIREWORKS_API_KEY}
       - QDRANT_URL=http://qdrant:6333  # ← ВАЖНО: использовать имя сервиса
