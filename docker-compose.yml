@@ -9,17 +9,26 @@ services:
     volumes:
       - qdrant_storage:/qdrant/storage
     restart: unless-stopped
+    networks:
+      - materials-ai-network
 
   backend:
-    build: .                   # Uses your Dockerfile in the current directory
+    build: .
     container_name: materials_ai_backend
     environment:
       - FIREWORKS_API_KEY=${FIREWORKS_API_KEY}
+      - QDRANT_URL=http://qdrant:6333  # ← ВАЖНО: использовать имя сервиса
     ports:
-      - "5000:5000"            # Flask app port
+      - "5000:5000"
     depends_on:
       - qdrant
     restart: unless-stopped
+    networks:
+      - materials-ai-network
 
 volumes:
   qdrant_storage:
+
+networks:
+  materials-ai-network:
+    driver: bridge
